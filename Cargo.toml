@@ -1,0 +1,40 @@
+[package]
+name = "pg_opendal"
+version = "0.0.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+
+[[bin]]
+name = "pgrx_embed_pg_opendal"
+path = "./src/bin/pgrx_embed.rs"
+
+[features]
+default = ["pg13"]
+pg13 = ["pgrx/pg13", "pgrx-tests/pg13" ]
+pg14 = ["pgrx/pg14", "pgrx-tests/pg14" ]
+pg15 = ["pgrx/pg15", "pgrx-tests/pg15" ]
+pg16 = ["pgrx/pg16", "pgrx-tests/pg16" ]
+pg17 = ["pgrx/pg17", "pgrx-tests/pg17" ]
+pg_test = []
+
+[dependencies]
+anyhow = "1.0.98"
+futures = "0.3.31"
+opendal = { version = "0.53", features = ["services-fs", "services-s3", "services-memory"] }
+pgrx = "=0.14.3"
+serde_json = "1.0.140"
+tokio = "1.45.1"
+
+[dev-dependencies]
+pgrx-tests = "=0.14.3"
+
+[profile.dev]
+panic = "unwind"
+
+[profile.release]
+panic = "unwind"
+opt-level = 3
+lto = "fat"
+codegen-units = 1
