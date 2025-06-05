@@ -1,35 +1,6 @@
 # Note it still vibe in progress
 
-## pg_opendal### Requirements
-
-- PostgreSQL 13-17
-- Rust 1.70+
-- pgrx 0.14.3
-
-## Build and Install
-
-```bash
-# Install pgrx
-cargo install cargo-pgrx
-
-# Initialize pgrx
-cargo pgrx init
-
-# Build and install the extension
-cargo pgrx install
-```
-
-### Enable the Extension in PostgreSQLsion that provides unified access to various storage services through [OpenDAL](https://opendal.apache.org/). This extension allows you to interact with cloud storage services, local filesystems, and other storage backends directly from PostgreSQL
-
-## Supported Storage Services
-
-- **File System** (`fs`): Local file system
-- **Amazon S3** (`s3`): S3-compatible object storage
-- **Memory Storage** (`memory`): Temporary in-memory storage
-
-## Installation
-
-### Requirements
+## Requirements
 
 - PostgreSQL 13-17
 - Rust 1.70+
@@ -49,9 +20,7 @@ cargo pgrx install
 CREATE EXTENSION pg_opendal;
 ```
 
-## API Functions
-
-### File Operations
+### Examples
 
 #### pg_opendal_read(service, path, config)
 
